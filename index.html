@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mobile Multi-Cam</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- プレビューエリア（画面上部） -->
+        <div class="preview-container">
+            <video id="preview" autoplay muted playsinline></video>
+            <div id="recordingStatus" class="status-badge">REC</div>
+        </div>
+
+        <!-- 操作パネル（画面下部） -->
+        <div class="controls-panel">
+            <div class="setting-row">
+                <select id="modeSelect">
+                    <option value="normal">通常録画</option>
+                    <option value="sequence">n秒 連続撮影</option>
+                    <option value="ghost">残像(レイヤー)撮影</option>
+                </select>
+                <div class="input-group">
+                    <input type="number" id="durationInput" value="3"><span>秒</span>
+                </div>
+            </div>
+
+            <div class="speed-control">
+                <label>速度: <span id="speedValue">1.0</span>x</label>
+                <input type="range" id="speedRange" min="0.25" max="3" step="0.25" value="1">
+            </div>
+
+            <div class="main-buttons">
+                <button id="startBtn" class="record-btn">録画開始</button>
+                <button id="stopBtn" class="stop-btn" disabled>停止</button>
+            </div>
+            
+            <button id="downloadAllBtn" class="secondary-btn">全動画を一括保存</button>
+        </div>
+
+        <!-- ギャラリーエリア -->
+        <div class="gallery-section">
+            <h3>保存済みクリップ</h3>
+            <div id="videoList" class="video-scroll-x"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
